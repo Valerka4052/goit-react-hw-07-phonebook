@@ -3,18 +3,13 @@ import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
 import { useEffect } from "react";
 import { fetchContacts} from "api";
-import { useDispatch, useSelector } from "react-redux";
-// import { useSelector } from 'react-redux';
-import { Loader } from 'components/Loader/Loader'; 
-
-        
+import { useDispatch } from "react-redux";
 
 export function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-const isLoading = useSelector(state => state.contacts.isLoading)
   return (
     <div
       style={{
@@ -39,12 +34,8 @@ const isLoading = useSelector(state => state.contacts.isLoading)
           <h2>Contacts</h2>
           <Filter />
         </div>
-       
-          <ContactList />
-            { isLoading && <Loader />}
+        <ContactList />
       </div>
-    
     </div>
-     
   );
 };
