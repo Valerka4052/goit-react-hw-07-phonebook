@@ -38,7 +38,8 @@ margin-bottom:20px;
 `;
 
 export const Button = styled.button`
-display:inline-block;
+display:inline-flex;
+justify-content: center;
 align-items:center;
 margin-left:auto;
 margin-right:auto;
