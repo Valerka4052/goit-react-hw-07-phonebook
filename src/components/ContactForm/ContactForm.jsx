@@ -7,7 +7,6 @@ import { addContact } from "api";
 export function ContactForm() {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts.items);
-    const isLoading = useSelector(state => state.contacts.isLoading);
 
     const getValues = (inputValues) => {
         if (inputValues.name === '' || inputValues.number === '') {
@@ -58,7 +57,7 @@ export function ContactForm() {
                 <Form>
                     <Label>Name<Field name="name" /><ErrorMessage name="name" component="p" /></Label>
                     <Label>Number<Field name="number" /><ErrorMessage name="number" type="number" component="p" /></Label>
-                    <Button type="submit" disabled={isLoading}>add contact</Button>
+                    <Button type="submit">add contact</Button>
                 </Form>
             </Formik>
         );

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
 position:absolute;
-pointer-events: none;
+/* pointer-events: none; */
  width: 50%;
   height: 50%;
   /* overflow: auto; */
