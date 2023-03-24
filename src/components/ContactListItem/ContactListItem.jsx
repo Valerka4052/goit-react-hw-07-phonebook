@@ -14,7 +14,9 @@ const dispatch = useDispatch()
                 onClick={() => {
                     dispatch(removeContact(id))
                 }}
-                type='button' disabled={isLoading}>Delete
+                type='button'
+                disabled={isLoading}>
+                Delete
             </Button>
         </Item>
     );

@@ -5,7 +5,7 @@ display:flex;
 flex-direction: column;
 padding:40px;
 width: 800px;
-height:auto;
+max-height:100vh;
 border-radius: 40px;
-list-style:none
+list-style:none;
 `;

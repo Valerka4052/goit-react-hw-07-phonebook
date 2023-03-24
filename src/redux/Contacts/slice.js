@@ -20,6 +20,7 @@ export const myContactsSlice = createSlice({
         
         [fetchContacts.rejected](state, action) {
             state.isLoading = false;
+            console.log('aaaaaaaaaaa')
             state.error = action.payload;
         },
 
@@ -34,6 +35,7 @@ export const myContactsSlice = createSlice({
 
         [addContact.rejected](state, action) {
             state.isLoading = false;
+             console.log('aaaaaaaaaaa')
             state.error = action.payload;
         },
 
@@ -52,6 +54,7 @@ export const myContactsSlice = createSlice({
     
         [removeContact.rejected](state, action) {
             state.isLoading = false;
+             console.log('aaaaaaaaaaa')
             state.error = action.payload;
         },
     },

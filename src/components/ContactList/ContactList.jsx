@@ -12,7 +12,6 @@ export function ContactList () {
     });
 
     return (
-        //  isLoading ? <Loader /> :
         contacts.length > 0 && <List>
             {filteredContacts.map(({ name, phone, id }) => {
                 return <ContactListItem
