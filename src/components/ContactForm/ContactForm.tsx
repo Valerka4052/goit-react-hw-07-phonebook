@@ -1,14 +1,17 @@
 import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage, Label, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "api";
+import { addContact } from "../../api";
+import { AppDispatch, RootState } from '../../redux/store';
+import { ContactType } from '../../types';
+import { FormikValues } from 'formik';
 
 
 export function ContactForm() {
-    const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts.items);
+    const dispatch:AppDispatch = useDispatch();
+    const contacts = useSelector((state: RootState) => state.contacts.items);
 
-    const getValues = (inputValues) => {
+    const getValues = (inputValues:FormikValues):void => {
         if (inputValues.name === '' || inputValues.number === '') {
             return;
         } else if (contacts.find((contact) => {
@@ -16,7 +19,7 @@ export function ContactForm() {
         })) {
             return alert(`${inputValues.name} is already in contacts`);
         } else {
-            const contact = {
+            const contact:ContactType = {
                 name: inputValues.name,
                 phone: inputValues.number,
             };
@@ -43,20 +46,16 @@ export function ContactForm() {
             number: phoneSchema,
         });
 
-        const submitForm = (values) => {
-           getValues(values);
-        };
+    const submitForm = (values: FormikValues):void => {
+        getValues(values);
+    };
         
     
         return (
-            <Formik
-                initialValues={values}
-                onSubmit={submitForm}
-                validationSchema={validationSchema}
-            >
+            <Formik initialValues={values} onSubmit={submitForm} validationSchema={validationSchema}>
                 <Form>
                     <Label>Name<Field name="name" /><ErrorMessage name="name" component="p" /></Label>
-                    <Label>Number<Field name="number" /><ErrorMessage name="number" type="number" component="p" /></Label>
+                    <Label>Number<Field name="number" /><ErrorMessage name="number" component="p" /></Label>
                     <Button type="submit">add contact</Button>
                 </Form>
             </Formik>

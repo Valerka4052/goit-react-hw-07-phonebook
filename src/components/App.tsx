@@ -2,16 +2,17 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
 import { useEffect } from "react";
-import { fetchContacts} from "api";
+import { fetchContacts} from "../api";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "./Loader/Loader";
+import { AppDispatch, RootState } from "../redux/store";
 
 export function App() {
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  const { error, isLoading } = useSelector(state => state.contacts);
+  const { error, isLoading } = useSelector((state: RootState) => state.contacts);
 
   return (
     <div
@@ -23,11 +24,10 @@ export function App() {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
           textAlign: 'center',
         }}
       >
-        {error ? <h1>{error.message}</h1> :
+        {error.message ? <h1>{error.message}</h1> :
           <div>
             <h1>Phonebook</h1>
             <ContactForm />
